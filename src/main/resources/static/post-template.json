@@ -1,0 +1,18 @@
+{
+  "httpMethod": "GET",
+  "url": "http://localhost:8080/callURL",
+  "requestParams": {
+    "requestParamOne": "requestParamValueOne",
+    "requestParamTwo": "requestParamValueTwo",
+    "requestParamThree": "requestParamValueThree",
+    "requestParamFour": "requestParamValueFour"
+  },
+  "headers": {
+    "keyone": "valueOne",
+    "keyTwo": "valueTwo"
+  },
+  "requestParamsAreQueryParams": false,
+  "requestBody": {
+    "callRequestBody": "post-request-body-string"
+  }
+}

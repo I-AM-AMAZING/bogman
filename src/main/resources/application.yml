@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: OS-Web-Tools
+
+
+port: 8085
+
+server:
+  servlet:
+    context-path: /bogpost
+  port: 8085
+
+
+eureka-server:
+  hostname: localhost
+  port: 9090
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://${eureka-server.hostname}:${eureka-server.port}/eureka}
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    preferIpAddress: false
+    hostname: localhost
+
+management:
+  endpoints:
+    web:
+      base-path: /
+      exposure:
+        include: '*'

@@ -1,0 +1,22 @@
+{
+  "httpMethod": "GET",
+  "url": "http://localhost:8080/callURL",
+  "requestParams": {
+    "requestParamOne":"requestParamValueOne",
+    "requestParamTwo":"requestParamValueTwo",
+    "requestParamThree":"requestParamValueThree",
+    "requestParamFour":"requestParamValueFour"
+  },
+  "headers": {"keyone": "valueOne", "keyTwo": "valueTwo"},
+  "requestParamsAreQueryParams": true
+}
+
+/* For GET method, request params must be query params*/
+
+/*
+private RequestCallBodyDTO requestBody;
+private String httpMethod;
+private String url;
+private Map<String, String> headers;
+private Map<String, String> requestParams;
+private Boolean requestParamsAreQueryParams = Boolean.FALSE;*/
