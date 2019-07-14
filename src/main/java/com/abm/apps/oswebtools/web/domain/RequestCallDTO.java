@@ -12,6 +12,7 @@ public class RequestCallDTO {
 
     private String httpMethod;
     private String url;
+    private String subURL;
     private Boolean urlIsEurekaServiceId = Boolean.FALSE;
     private Map<String, String> headers;
     private Map<String, String> requestParams;

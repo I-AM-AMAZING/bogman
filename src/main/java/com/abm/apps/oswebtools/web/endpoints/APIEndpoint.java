@@ -4,6 +4,7 @@ import com.abm.apps.oswebtools.web.domain.RequestCallBodyDTO;
 import com.abm.apps.oswebtools.web.domain.RequestCallDTO;
 import com.abm.apps.oswebtools.web.domain.ResponseBodyDTO;
 import com.abm.apps.oswebtools.web.util.HttpUtil;
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,6 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 @RestController
 public class APIEndpoint {
@@ -53,32 +53,37 @@ public class APIEndpoint {
 
   /**
    * Currently works only for GET requests
+   *
    * @param request
    * @return
    */
   @PostMapping(path = "/makeCall", consumes = "application/json", produces = "application/json")
   public HttpEntity<?> makeCall(@RequestBody RequestCallDTO request) {
 
-    //Prepare
+    // Prepare
     HttpMethod httpMethod = httpUtil.getHttpMethod(request.getHttpMethod());
     HttpEntity<RequestCallBodyDTO> requestBody = new HttpEntity<>(request.getRequestBody());
 
     List<String> eurekaURLs = null;
     String URL = request.getUrl();
-    if(request.getUrlIsEurekaServiceId()){
+    if (request.getUrlIsEurekaServiceId()) {
       eurekaURLs = obtainEurekaServiceURL(URL);
+      if (!StringUtils.isEmpty(request.getSubURL())) {
+        URL += request.getUrl();
+      }
     }
-    Map<String, String> headers = request.getHeaders();
-    Map<String, String> requestParams = request.getRequestParams();
 
-    HttpEntity<?> response =
-        restTemplate.exchange(
-            request.getUrlIsEurekaServiceId() ? eurekaURLs.get(0) : URL,
-            httpMethod,
-            requestBody,
-            ResponseBodyDTO.class);
+    LOGGER.info("Making the call to URL = [{}], HTTP_METHOD = [{}]", URL, httpMethod);
 
-    return response;
+    try {
+
+      HttpEntity<?> response = restTemplate.exchange(URL, httpMethod, null, ResponseBodyDTO.class);
+
+      return response;
+    } catch (Exception e) {
+      LOGGER.error("Error encountered when making the call", e);
+      throw e;
+    }
   }
 
   private List<String> obtainEurekaServiceURL(String serviceId) {
