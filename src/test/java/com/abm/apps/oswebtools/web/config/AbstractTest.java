@@ -1,6 +1,6 @@
 package com.abm.apps.oswebtools.web.config;
 
-import com.abm.apps.oswebtools.OsWebToolsApplication;
+import com.abm.apps.oswebtools.BogmanApplication;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -17,7 +17,7 @@ import org.springframework.web.context.WebApplicationContext;
 import java.io.IOException;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = OsWebToolsApplication.class)
+@SpringBootTest(classes = BogmanApplication.class)
 @WebAppConfiguration
 public abstract class AbstractTest {
   protected MockMvc mvc;

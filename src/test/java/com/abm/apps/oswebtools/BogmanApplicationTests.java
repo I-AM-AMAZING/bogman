@@ -11,7 +11,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class OsWebToolsApplicationTests {
+public class BogmanApplicationTests {
 
     @Autowired
     private APIEndpoint apiEndpoint;

@@ -6,10 +6,10 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-public class OsWebToolsApplication {
+public class BogmanApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(OsWebToolsApplication.class, args);
+        SpringApplication.run(BogmanApplication.class, args);
     }
 
 }

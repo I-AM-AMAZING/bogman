@@ -26,7 +26,6 @@ public class HttpUtil {
   public ResponseBodyDTO getResponseBodyDTO(String content) {
     ResponseBodyDTO response = new ResponseBodyDTO();
     response.setResult(content);
-
     return response;
   }
 }

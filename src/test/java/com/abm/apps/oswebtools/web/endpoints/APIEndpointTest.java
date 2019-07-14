@@ -1,6 +1,6 @@
 package com.abm.apps.oswebtools.web.endpoints;
 
-import com.abm.apps.oswebtools.OsWebToolsApplication;
+import com.abm.apps.oswebtools.BogmanApplication;
 import com.abm.apps.oswebtools.web.domain.ResponseBodyDTO;
 import com.abm.apps.oswebtools.web.util.HttpUtil;
 import org.junit.Test;
@@ -17,7 +17,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(
-    classes = OsWebToolsApplication.class,
+    classes = BogmanApplication.class,
     webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class APIEndpointTest {
 
